@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "RootViewController.h"
 
 @implementation AppDelegate
 
@@ -14,8 +15,16 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    RootViewController *rootView = [[RootViewController alloc] init];
+    rootView.title = @"Root View";
+    
+    self.navController = [[UINavigationController alloc] init];
+    [self.navController pushViewController:rootView animated:YES];
+    [self.window addSubview:self.navController.view];
+    
+    self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -45,5 +54,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end
